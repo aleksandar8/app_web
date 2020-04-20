@@ -1,0 +1,3 @@
+
+sudo DEBUG=* node app.js   // all application
+sudo DEBUG=app node app.js //debug app file
