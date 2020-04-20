@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 7779;
+const port = process.env.PORT || 8000;
+
 
 app.use(morgan('tiny'));
 
@@ -15,10 +16,22 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
+
+const nav =  [
+  { link: '/books', title: 'Books' },
+  { link: '/authors', title: 'Author' }
+];
+
+const bookRouter = require('./src/routes/bookRoutes')(nav);
+
+app.use('/books', bookRouter);
 app.get('/', (req, res) => {
-  res.render('index', {
-    list: ['a', 'b'], title: 'Novo'
-  });
+  res.render('index',
+    {
+      nav: [{ link: '/books', title: 'Books' },
+      { link: '/authors', title: 'Authors' }],
+      title: 'Novo',
+    });
 });
 app.listen(port, () => {
   debug(`Server listening on port ${chalk.green(port)}`);
