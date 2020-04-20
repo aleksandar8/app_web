@@ -1,3 +1,32 @@
 
 sudo DEBUG=* node app.js   // all application
 sudo DEBUG=app node app.js //debug app file
+
+
+
+GIT
+
+--ESLINT--
+npm install eslint --save-dev // install
+npx eslint --init // lint init
+npx eslint app.js // run eslint
+
+"lint": "eslint app.js" // package.jason
+npm run lint
+
+--NODEMON---
+
+sudo npm install nodemon
+
+// package.jason
+"nodemonConfig": {
+    "restartable": "re",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay": "2500",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": ????
+    }
+  }

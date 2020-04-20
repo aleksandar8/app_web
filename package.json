@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sudo DEBUG=app node app.js",
+    "lint": "eslint app.js"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,33 @@
   },
   "homepage": "https://github.com/aleksandar8/app_web#readme",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "chalk": "^4.0.0",
     "debug": "^2.6.6",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "jquery": "^3.5.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.3",
     "npm": "^6.14.4",
     "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  },
+  "nodemonConfig": {
+    "restartable": "re",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay": "2500",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 4000
+    }
   }
+
+
 }
