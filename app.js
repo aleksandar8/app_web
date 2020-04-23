@@ -27,6 +27,7 @@ const adminRouter = require('./src/routes/adminRoutes')(nav);
 
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
+
 app.get('/', (req, res) => {
   res.render('index',
     {
