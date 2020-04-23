@@ -9,12 +9,14 @@ books = [
     title: 'kniga1',
     author: 'fbfgbb',
     gander: 'horor',
+    bookId: 656,
     read: false,
   },
   {
     title: 'kniga2',
     author: 'gbhnjmmj',
     gander: 'horor',
+    bookId: 24280,
     read: false,
   },
   {
