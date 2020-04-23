@@ -6,6 +6,15 @@ const bookRouter = express.Router();
 
 
 function route(nav) {
+  bookRouter.use((req, res, next) => {
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/auth/singin');
+    }
+
+  });
+
 
   bookRouter.route('/')
     .get((req, res) => {
@@ -55,7 +64,7 @@ function route(nav) {
 
           const col = await db.collection('books');
           const book = await col.findOne({ _id: new ObjectID(id) });
-            debug (book);          
+          debug(book);
           res.render(
             'bookView',
             {
@@ -75,11 +84,5 @@ function route(nav) {
     });
   return bookRouter;
 }
-
-
-
-
-
-
 
 module.exports = route;

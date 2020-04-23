@@ -9,12 +9,11 @@
   <meta charset="utf-8">
   <meta name="generator" content="Bootply" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-   <!-- Latest compiled and minified CSS -->
-  <link href="/css/styles.css" rel="stylesheet">
-  <link  href="/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Latest compiled and minified CSS -->
+ <link href="/css/styles.css" rel="stylesheet">
+ <link  href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-
 </head>
 
 <body>
@@ -102,13 +101,13 @@
 
 
                 <!-- Admin form -->
-                <h3>Sing up! or</h3> <a href="/auth/singin">Sing in</a>
-                <form name="singUpForm" action="/auth/singUp" method="POST">
+                <h3>Sing in!</h3>
+                <form name="singInForm" action="/auth/singin" method="POST">
                   <div class="form-group">
                     <!-- Email -->
                     <label for="exampleInputEmail1">Username</label>
                     <input name="username" class="form-control" id="username"
-                      aria-describedby="emailHelp" placeholder="Enter email">
+                      aria-describedby="emailHelp" placeholder="username">
 
                   </div>
                   <div class="form-group">
@@ -117,12 +116,11 @@
                     <input name="password" class="form-control" id="password" placeholder="Password">
                   </div>
 
-                  <button type="submit" value="Sing Up" class="btn btn-primary">Submit</button>
+                  <button type="submit" value="Sing In" class="btn btn-primary">Submit</button>
 
                 </form>
-                  <form action="/auth/logout">
-                  <button type="submit" value="logout" >Logout</button>
-                </form>
+
+
               </div>
             </div>
 
@@ -175,9 +173,9 @@
         </div>
       </footer>
       <!-- jquery CDN -->
-      <script src="js/jquery.min.js"></script>
+      <script src="/js/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
 
 </body>
 
