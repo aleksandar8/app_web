@@ -1,64 +1,86 @@
 const express = require('express');
+const { MongoClient, ObjectID } = require('mongodb');
+const debug = require('debug')('app: bookRoutes');
+
 const bookRouter = express.Router();
 
 
-function route(nav){
-  books = [
-    {
-      title: 'kniga1',
-      author: 'fbfgbb',
-      gander: 'horor',
-      read: false,
-    },
-    {
-      title: 'kniga3',
-      author: 'gbhnjmmj',
-      gander: 'horor',
-      read: false,
-    },
-    {
-      title: 'kniga4',
-      author: 'gbhnjmmj',
-      gander: 'drama',
-      read: false,
-    },
-    {
-      title: 'kniga5',
-      author: 'gbhnjmmj',
-      gander: 'drama',
-      read: false,
-    }
-  ];
+function route(nav) {
+
   bookRouter.route('/')
     .get((req, res) => {
-      res.render('booksListView',
-        {
-          nav,
-          title: 'Novo',
-          books
+      const url = 'mongodb://localhost:27017';
+      const dbName = 'libaryAPP';
+
+      (async function mongo() {
+        let client;
+        try {
+          client = await MongoClient.connect(url);
+          debug('Connect to the server');
+
+          const db = client.db(dbName);
+
+          const col = await db.collection('books');
+
+          const books = await col.find().toArray();
+
+          res.render('booksListView',
+            {
+              nav,
+              title: 'Novo',
+              books
+            }
+          );
+        } catch (err) {
+          debug(err.stack);
         }
-      );
+        client.close();
+      }());
+
     });
-  
+
   bookRouter.route('/:id')
 
-  .get((req, res) => {
+    .get((req, res) => {
       const { id } = req.params;
-      res.render(
-        'bookView',
-        {
-          nav,
-          title: 'Novo',
-          book: books[id]
+      const url = 'mongodb://localhost:27017';
+      const dbName = 'libaryAPP';
+      (async function mongo() {
+        let client;
+        try {
+          client = await MongoClient.connect(url);
+          debug('Connect to the server');
+
+          const db = client.db(dbName);
+
+          const col = await db.collection('books');
+          const book = await col.findOne({ _id: new ObjectID(id) });
+
+            debug (book);          
+
+          res.render(
+            'bookView',
+            {
+              nav,
+              title: 'Novo',
+              book
+            }
+          );
+        } catch (err) {
+          debug(err.stack);
         }
-      );
+
+
+      }())
+
+
     });
- return bookRouter;
+  return bookRouter;
 }
 
 
 
-  
+
 
 
 

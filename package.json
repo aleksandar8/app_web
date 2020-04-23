@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sudo DEBUG=app node app.js",
+    "start": "sudo DEBUG=app,app:*  node app.js",
     "lint": "eslint app.js"
   },
   "repository": {
@@ -25,7 +25,10 @@
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "jquery": "^3.5.0",
+    "mongodb": "^3.5.6",
     "morgan": "^1.10.0",
+    "mssql": "^6.2.0",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.3",
     "npm": "^6.14.4",
     "update": "^0.7.4"
